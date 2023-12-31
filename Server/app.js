@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Third-Party
 
     const corsOptions ={
-        origin:'https://creative-centaur-1c703e.netlify.app/', 
+        origin:'https://ignite-learning.onrender.com', 
         credentials:true,            //access-control-allow-credentials:true
         optionSuccessStatus:200
     }
