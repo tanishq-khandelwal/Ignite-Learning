@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: true }));
     const corsOptions ={
         origin:'https://ignitelearning.netlify.app', 
         credentials:true, 
-        httpOnly: false,
+        httpOnly: true,
         optionSuccessStatus:200,
-        sameSite: 'none',
+        sameSite: 'None',
         secure: true
     }
     app.use(cors(corsOptions));
