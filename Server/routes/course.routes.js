@@ -16,9 +16,9 @@ router
   );
 
   router.route('/:id')
-    .get(isLoggedIn,getLecturesByCourseId)
-    .put(isLoggedIn,updateCourse)
-    .delete(isLoggedIn,removeCourse)
+    .get(getLecturesByCourseId)
+    .put(updateCourse)
+    .delete(removeCourse)
     
     .post(isLoggedIn,upload.single('lecture'),addLectureToCourseById);
 
