@@ -18,7 +18,7 @@ app.set("trust proxy", 1);
 
 // CORS middleware
 app.use(cors({
-  origin: 'https://ignitelearning.netlify.app', // Specify the allowed origin
+  origin: 'https://ignitelearning.netlify.app',
   credentials: true,
   httpOnly: false,
   optionSuccessStatus: 200,
@@ -27,10 +27,11 @@ app.use(cors({
   cookie: {
     secure: true,
     sameSite: 'None',
-  },
+  }
 }));
 
 app.use(cookieParser());
+app.use(express.json());  // Add this line to parse JSON requests
 
 // Server Status Check Route
 app.get('/ping', (_req, res) => {
