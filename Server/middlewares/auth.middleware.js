@@ -20,6 +20,7 @@ const isLoggedIn = async (req, res, next) => {
             httpOnly: false
         };
         res.cookie('token', token, cookieOptions);
+        console.log('Token set successfully');
 
         // Continue with the next middleware or route handler
         next();
