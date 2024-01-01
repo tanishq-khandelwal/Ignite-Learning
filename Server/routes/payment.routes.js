@@ -5,10 +5,10 @@ import { authorizedRoles, isLoggedIn ,authorizeSubscribers} from "../middlewares
 
 const router =Router();
 
-router.route('/subscribe').post(buySubscription);
-router.route('/verify').post(verifySubscription);
-router.route('/unsubscribe').post(authorizeSubscribers,cancelSubscription);
-router.route('/razorpay-key').get( getRazorpayApiKey);
+router.route('/subscribe').post(isLoggedIn, buySubscription);
+router.route('/verify').post(isLoggedIn, verifySubscription);
+router.route('/unsubscribe').post(isLoggedIn,authorizeSubscribers,cancelSubscription);
+router.route('/razorpay-key').get(isLoggedIn, getRazorpayApiKey);
 router.route('/').get(allPayments);
 
 export default router;
