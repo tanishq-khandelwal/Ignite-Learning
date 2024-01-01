@@ -8,18 +8,18 @@ const router=Router();
 router
   .route('/')
   .get(getAllCourses)
-  .delete(removeLectureFromCourse)
+  .delete(isLoggedIn,removeLectureFromCourse)
   .post(
-   
+    isLoggedIn,
     upload.single('thumbnail'),
     createCourse
   );
 
   router.route('/:id')
-    .get(getLecturesByCourseId)
-    .put(updateCourse)
-    .delete(removeCourse)
+    .get(isLoggedIn,getLecturesByCourseId)
+    .put(isLoggedIn,updateCourse)
+    .delete(isLoggedIn,removeCourse)
     
-    .post(upload.single('lecture'),addLectureToCourseById);
+    .post(isLoggedIn,upload.single('lecture'),addLectureToCourseById);
 
 export default router;
