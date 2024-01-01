@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Third-Party
 
     const corsOptions ={
-        origin:'https://ignitelearning.netlify.app', 
+        origin:'*', 
         credentials:true, 
         httpOnly: false,
         optionSuccessStatus:200,
