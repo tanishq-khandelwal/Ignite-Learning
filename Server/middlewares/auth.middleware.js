@@ -14,6 +14,7 @@ const isLoggedIn = async (req, res, next) => {
 
         // Setting the cookie within the context of the route handler
         const cookieOptions = {
+            resave: false,
             secure: true,
             sameSite: 'none',
             httpOnly: false
