@@ -26,7 +26,9 @@ app.use(express.urlencoded({ extended: true }));
         httpOnly: false,
         optionSuccessStatus:200,
         sameSite: 'None',
-        secure: true
+        secure: true,
+
+        cookie:{secure:true,sameSite: 'None'}
     }
     app.use(cors(corsOptions));
 
