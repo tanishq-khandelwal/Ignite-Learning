@@ -14,7 +14,7 @@ const app = express(); // Create an instance of express
 
 // Logging middleware
 app.use(morgan('dev'));
-
+app.set("trust proxy",1);
 // CORS middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
