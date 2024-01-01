@@ -7,32 +7,29 @@ import errorMiddleware from './middlewares/error.middlewares.js';
 import dotenv from 'dotenv';
 import courseRoutes from './routes/course.routes.js';
 import paymentRoutes from './routes/payment.routes.js';
-import miscRoutes from './routes/miscellaneous.routes.js'
+import miscRoutes from './routes/miscellaneous.routes.js';
 
 dotenv.config();
-const app = express(); // Create an instance of express
+const app = express();
 
 // Logging middleware
 app.use(morgan('dev'));
-app.set("trust proxy",1);
+app.set("trust proxy", 1);
+
 // CORS middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-// Third-Party
+app.use(cors({
+  origin: 'https://ignitelearning.netlify.app', // Specify the allowed origin
+  credentials: true,
+  httpOnly: false,
+  optionSuccessStatus: 200,
+  sameSite: 'None',
+  secure: true,
+  cookie: {
+    secure: true,
+    sameSite: 'None',
+  },
+}));
 
-    const corsOptions ={
-        origin:'*', 
-        credentials:true, 
-        httpOnly: false,
-        optionSuccessStatus:200,
-        sameSite: 'None',
-        secure: true,
-
-        cookie:{secure:true,sameSite: 'None'}
-    }
-    app.use(cors(corsOptions));
-
-app.use(morgan('dev'));
 app.use(cookieParser());
 
 // Server Status Check Route
@@ -46,16 +43,14 @@ app.use('/api/v1/courses', courseRoutes);
 app.use('/api/v1/payments', paymentRoutes);
 app.use('/api/v1', miscRoutes);
 
-
-
 // Ping route
 app.use('/ping', (req, res) => {
-    res.send('pong');
+  res.send('pong');
 });
 
 // 404 route
 app.all('*', (req, res) => {
-    res.status(404).send('OOPS!! 404 Page Not Found');
+  res.status(404).send('OOPS!! 404 Page Not Found');
 });
 
 // Error handling middleware
