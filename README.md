@@ -2,6 +2,7 @@
 
 Welcome to Ignite Learning, a platform for online education and courses.
 
+![Homepage Screenshot](homepageimage.png)
 ## Table of Contents
 - [About](#about)
 - [Features](#features)
